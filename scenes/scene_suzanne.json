@@ -1,0 +1,99 @@
+{
+    "_type": "Scene",
+  "camera": { 
+    "_type": "Camera", 
+    "frame": { 
+      "o": [ 0.728211, -1.355490, 2.461968 ], 
+      "x": [ 0.886995, 0.461779, -0.000000 ], 
+      "y": [ -0.376596, 0.723373, 0.578712 ], 
+      "z": [ 0.267237, -0.513314, 0.815532 ]
+    }, 
+    "view_dist": 7.898217, 
+    "image_width": 1.000000, 
+    "image_height": 1.000000, 
+    "image_dist": 1.000000, 
+    "focus_dist": 6.708204, 
+    "focus_aperture": 0.00000, 
+    "orthographic": false
+  }, 
+  "lights": { 
+    "_type": "LightGroup", 
+    "lights": [ 
+      { 
+        "_type": "AreaLight", 
+        "frame": { 
+          "o": [ 2.000000, 1.000000, 4.000000 ], 
+          "x": [ 1.000000, 0.000000, 0.000000 ], 
+          "y": [ -0.000000, -1.000000, -0.000000 ], 
+          "z": [ -0.000000, -0.000000, -1.000000 ]
+        }, 
+        "intensity": [ 5.000000, 4.500000, 3.500000 ], 
+        "shape": { 
+          "_type": "Quad", 
+          "width": 2.000000, 
+          "height": 2.000000
+        }, 
+        "shadow_samples": 16
+      },
+      { 
+        "_type": "AreaLight", 
+        "frame": { 
+          "o": [ -2.000000, 3.000000, 4.000000 ], 
+          "x": [ 1.000000, 0.000000, 0.000000 ], 
+          "y": [ -0.000000, -1.000000, -0.000000 ], 
+          "z": [ -0.000000, -0.000000, -1.000000 ]
+        }, 
+        "intensity": [ 3.000000, 4.200000, 5.200000 ], 
+        "shape": { 
+          "_type": "Quad", 
+          "width": 2.000000, 
+          "height": 2.000000
+        }, 
+        "shadow_samples": 16
+      }
+     ],
+     },
+    "prims": {
+        "_type": "PrimitiveGroup",
+        "prims": [
+            {
+                "_type": "Surface",
+                "material": {
+                    "_type": "Lambert",
+                    "diffuse": [1,1, 1],
+                },
+                "shape": {
+                    "_include": "suzanne.json"
+                }
+            },
+      { 
+        "_type": "Surface", 
+        "frame": { 
+          "o": [ 0.000000, 0.000000, -1.000000 ], 
+          "x": [ 1.000000, 0.000000, 0.000000 ], 
+          "y": [ 0.000000, 1.000000, 0.000000 ], 
+          "z": [ 0.000000, 0.000000, 1.000000 ]
+        }, 
+        "material": { 
+          "_type": "Phong", 
+          "normal_texture": null, 
+          "diffuse": [ 0.800000, 0.800000, 0.800000 ], 
+          "specular": [ 0.150000, 0.150000, 0.150000 ], 
+          "reflection": [ 0.200000, 0.200000, 0.200000 ], 
+          "blur_size": 0.1,
+          "exponent": 100.000000, 
+          "diffuse_texture": null, 
+          "specular_texture": null, 
+          "reflection_texture": null, 
+          "exponent_texture": null, 
+          "use_reflected": false
+        }, 
+        "shape": { 
+          "_type": "Quad", 
+          "width": 1000.000000, 
+          "height": 1000.000000
+        }
+      },
+        ]
+    }
+}

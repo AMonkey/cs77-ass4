@@ -1,0 +1,81 @@
+{
+    "_type": "Scene",
+  "camera": { 
+    "_type": "Camera", 
+    "frame": { 
+      "o": [ 7.0, -12.0, 3.0 ], 
+      "x": [ 0.808028, 0.589144, -0.000000 ], 
+      "y": [ -0.066812, 0.091634, 0.993549 ], 
+      "z": [ 0.585344, -0.802815, 0.113404 ]
+    }, 
+    "view_dist": 14.2127, 
+    "image_width": 1.000000, 
+    "image_height": 1.000000, 
+    "image_dist": 1.000000, 
+    "focus_dist": 14.2127, 
+    "focus_aperture": 0.00000, 
+    "orthographic": false
+  }, 
+  "draw_opts": {
+    "_type": "DrawOptions",
+    "cameralights": true,
+    "ambient": [1,1,1],
+  },
+  "distribution_opts": {
+    "_type": "DistributionRaytraceOptions",
+    "ambient": [1,1,1],
+    "samples_ambient": 8,
+    "samples": 32
+  },
+  "raytrace_opts": {
+    "_type": "RaytraceOptions",
+    "cameralights": true,
+    "ambient": [0.1,0.1,0.1],
+  },
+  "pathtrace_opts": {
+    "_type": "PathtraceOptions",
+    "cameralights": true,
+    "ambient": [0.1,0.1,0.1],
+  },
+  "lights": { 
+    "_type": "LightGroup", 
+    "lights": [ 
+     ],
+     },
+    "prims": {
+        "_type": "PrimitiveGroup",
+        "prims": [
+            {
+                "_type": "Surface",
+                "frame":{
+                  "o":[0,0,0.92]
+                },
+                "material": {
+                    "_type": "Lambert",
+                    "diffuse": [1,1, 1],
+                },
+                "shape": {
+                    "_include": "robot.json"
+                }
+            },
+      { 
+        "_type": "Surface", 
+        "frame": { 
+          "o": [ 0.000000, 0.000000, -1.000000 ], 
+          "x": [ 1.000000, 0.000000, 0.000000 ], 
+          "y": [ 0.000000, 1.000000, 0.000000 ], 
+          "z": [ 0.000000, 0.000000, 1.000000 ]
+        }, 
+        "material": { 
+          "_type": "Lambert", 
+          "diffuse": [0.4,0.42,0.4], 
+        }, 
+        "shape": { 
+          "_type": "Quad", 
+          "width": 1000.000000, 
+          "height": 1000.000000
+        }
+      },
+        ]
+    }
+}

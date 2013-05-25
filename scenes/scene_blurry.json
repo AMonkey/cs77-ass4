@@ -1,0 +1,151 @@
+{ 
+  "_type": "Scene", 
+  "_id": 1, 
+  "camera": { 
+    "_type": "Camera", 
+    "_id": 2, 
+    "frame": { 
+      "o": [ 7.607666, 2.017318, 0.659897 ], 
+      "x": [ -0.256310, 0.966595, 0.000000 ], 
+      "y": [ -0.080760, -0.021415, 0.996504 ], 
+      "z": [ 0.963215, 0.255414, 0.083551 ]
+    }, 
+    "view_dist": 7.898217, 
+    "image_width": 1.000000, 
+    "image_height": 1.000000, 
+    "image_dist": 1.000000, 
+    "focus_dist": 6.708204, 
+    "focus_aperture": 0.000000, 
+    "orthographic": false
+  }, 
+  "distribution_opts": {
+    "_type": "DistributionRaytraceOptions",
+    "samples": 32,
+    "samples_reflect": 4
+  },
+  "lights": { 
+    "_type": "LightGroup", 
+    "_id": 3, 
+    "lights": [ 
+      { 
+        "_type": "PointLight", 
+        "_id": 4, 
+        "frame": { 
+          "o": [ 6.000000, -6.000000, 12.000000 ], 
+          "x": [ 1.000000, 0.000000, 0.000000 ], 
+          "y": [ 0.000000, 1.000000, 0.000000 ], 
+          "z": [ 0.000000, 0.000000, 1.000000 ]
+        }, 
+        "intensity": [ 100.000000, 100.000000, 100.000000 ]
+      }, 
+      { 
+        "_type": "PointLight", 
+        "_id": 5, 
+        "frame": { 
+          "o": [ -2.000000, -5.000000, 10.000000 ], 
+          "x": [ 1.000000, 0.000000, 0.000000 ], 
+          "y": [ 0.000000, 1.000000, 0.000000 ], 
+          "z": [ 0.000000, 0.000000, 1.000000 ]
+        }, 
+        "intensity": [ 50.000000, 50.000000, 50.000000 ]
+      }
+    ]
+  }, 
+  "prims": { 
+    "_type": "PrimitiveGroup", 
+    "_id": 6, 
+    "prims": [ 
+      { 
+        "_type": "Surface", 
+        "_id": 7, 
+        "frame": { 
+          "o": [ 0.000000, 0.000000, 0.000000 ], 
+          "x": [ 1.000000, 0.000000, 0.000000 ], 
+          "y": [ 0.000000, 1.000000, 0.000000 ], 
+          "z": [ 0.000000, 0.000000, 1.000000 ]
+        }, 
+        "material": { 
+          "_type": "Phong", 
+          "_id": 8, 
+          "normal_texture": null, 
+          "diffuse": [ 1.000000, 0.700000, 0.700000 ], 
+          "specular": [ 0.700000, 0.700000, 0.700000 ], 
+          "reflection": [ 0.000000, 0.000000, 0.000000 ], 
+          "exponent": 20.000000, 
+          "diffuse_texture": null, 
+          "specular_texture": null, 
+          "reflection_texture": null, 
+          "exponent_texture": null, 
+          "use_reflected": false
+        }, 
+        "shape": { 
+          "_type": "Sphere", 
+          "_id": 9, 
+          "center": [ 1.000000, 0.000000, 0.000000 ], 
+          "radius": 1.000000
+        }
+      }, 
+      { 
+        "_type": "Surface", 
+        "_id": 10, 
+        "frame": { 
+          "o": [ 0.000000, 0.000000, 0.000000 ], 
+          "x": [ 1.000000, 0.000000, 0.000000 ], 
+          "y": [ 0.000000, 1.000000, 0.000000 ], 
+          "z": [ 0.000000, 0.000000, 1.000000 ]
+        }, 
+        "material": { 
+          "_type": "Phong", 
+          "_id": 11, 
+          "normal_texture": null, 
+          "diffuse": [ 0.700000, 1.000000, 0.700000 ], 
+          "specular": [ 0.700000, 0.700000, 0.700000 ], 
+          "reflection": [ 0.000000, 0.000000, 0.000000 ], 
+          "exponent": 100.000000, 
+          "diffuse_texture": null, 
+          "specular_texture": null, 
+          "reflection_texture": null, 
+          "exponent_texture": null, 
+          "use_reflected": false
+        }, 
+        "shape": { 
+          "_type": "Sphere", 
+          "_id": 12, 
+          "center": [ -1.500000, 1.000000, -0.250000 ], 
+          "radius": 0.750000
+        }
+      }, 
+      { 
+        "_type": "Surface", 
+        "_id": 13, 
+        "frame": { 
+          "o": [ 0.000000, 0.000000, -1.000000 ], 
+          "x": [ 1.000000, 0.000000, 0.000000 ], 
+          "y": [ 0.000000, 1.000000, 0.000000 ], 
+          "z": [ 0.000000, 0.000000, 1.000000 ]
+        }, 
+        "material": { 
+          "_type": "Phong", 
+          "_id": 14, 
+          "normal_texture": null, 
+          "diffuse": [ 0.800000, 0.800000, 0.800000 ], 
+          "specular": [ 0.150000, 0.150000, 0.150000 ], 
+          "reflection": [ 1.000000, 1.000000, 1.000000 ], 
+          "blur_size": 0.1,
+          "exponent": 100.000000, 
+          "diffuse_texture": null, 
+          "specular_texture": null, 
+          "reflection_texture": null, 
+          "exponent_texture": null, 
+          "use_reflected": false
+        }, 
+        "shape": { 
+          "_type": "Quad", 
+          "_id": 15, 
+          "width": 1000.000000, 
+          "height": 1000.000000
+        }
+      }
+    ]
+  }
+}
