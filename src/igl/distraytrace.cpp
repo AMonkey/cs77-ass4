@@ -34,9 +34,10 @@ vec3f _dist_raytrace_scene_ray(Scene* scene,
         int visible = 0;
         for (int i = 0; i < opts.samples_ambient; i++) {
             // Make random ray along hemisphere of intersection frame
-            auto hemi_dir = normalize(vec3f(opts.rng.next_float(),
-                                            opts.rng.next_float(),
-                                            abs( opts.rng.next_float() ) ));
+            auto hemi_dir = normalize(vec3f(0.5f - opts.rng.next_float(),
+                                            0.5f - opts.rng.next_float(),
+                                            abs( 0.5f - opts.rng.next_float() ) ));
+            hemi_dir = transform_direction(intersection.frame, hemi_dir);
             ray3f hemi_ray = ray3f(intersection.frame.o, hemi_dir);
             if (not intersect_scene_any(scene, hemi_ray)) {
                 //c += opts.ambient * material_diffuse_albedo(brdfy) / opts.samples_ambient;

@@ -75,7 +75,6 @@ void init_buffers(int w, int h) {
 void render_pass(image3f& img) {
     if(distribution) {
         //PUT_YOUR_CODE_HERE("Distribution Raytracing");
-        disttrace_opts.samples = 4;
         dist_raytrace_scene_progressive(trace_image_buffer, scene, disttrace_opts);
 
     }
@@ -126,7 +125,6 @@ int main(int argc, char** argv) {
     auto samples = (pathtrace ? pathtrace_opts.samples : (distribution ? disttrace_opts.samples : opts.samples ) );
 
     // for debug:
-    samples = 4;
     for(auto s = 0; s < samples; s ++) {
         printf("Pass: %02d/%02d\n", s, samples);
         render_pass(img);
