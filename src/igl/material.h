@@ -4,6 +4,8 @@
 #include "node.h"
 #include "texture.h"
 #include "vmath/montecarlo.h"
+#include "vmath/frame.h"
+#include "vmath/ray.h"
 
 ///@file igl/material.h Materials. @ingroup igl
 ///@defgroup material Materials
@@ -54,6 +56,18 @@ struct LambertEmission : Material {
 
 ///@name eval interface
 ///@{
+
+inline ray3f rand_blurred_reflection(frame3f f,
+                                     vec3f r,
+                                     float l,
+                                     float rand_1,
+                                     float rand_2)
+{
+    auto shift = vec3f((0.5 - rand_1)*l, (0.5 - rand_2)*l, 0);
+    shift = transform_vector_inverse(f, shift);
+    return ray3f(f.o, (r + shift) / length(r + shift));
+
+}
 
 /// check whether a material has textures
 inline bool material_has_textures(Material* material) {

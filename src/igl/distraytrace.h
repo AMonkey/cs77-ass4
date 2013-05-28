@@ -34,6 +34,7 @@ struct DistributionRaytraceOptions : Node {
     Rng rng; ///< random number generator
 };
 
+void dist_raytrace_scene_progressive(ImageBuffer& buffer, struct Scene* scene, DistributionRaytraceOptions& opts);
 
 ///@}
 

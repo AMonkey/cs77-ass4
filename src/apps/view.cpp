@@ -10,8 +10,8 @@
 #include "igl/intersect.h"
 #include "igl/tesselate.h"
 
-#include "igl/raytrace.h"
 #include "igl/distraytrace.h"
+#include "igl/raytrace.h"
 #include "igl/pathtrace.h"
 
 ///@file apps/view.cpp View: Interactice Viewer @ingroup apps
@@ -112,7 +112,13 @@ void trace_progressive_pass() {
     trace_progressive_cursample++;
     trace_sync_opts();
     
-    if(trace_distributed) PUT_YOUR_CODE_HERE("Distribution Raytracing");
+    if(trace_distributed) {
+        //PUT_YOUR_CODE_HERE("Distribution Raytracing");
+        dist_raytrace_scene_progressive(trace_image_buffer,
+                                        scene,
+                                        trace_distributed_opts);
+
+    }
     else if(trace_path) PUT_YOUR_CODE_HERE("Pathtracing");
     else raytrace_scene_progressive(trace_image_buffer, scene, trace_opts);
     

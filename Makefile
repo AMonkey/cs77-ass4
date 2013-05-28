@@ -8,7 +8,7 @@
 
 # modify the following line so COMPILER is set to an
 # appropriate value (gcc,clang,mingwgcc,macportsgcc)
-COMPILER = none
+COMPILER = gcc
 
 
 

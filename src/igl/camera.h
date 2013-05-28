@@ -21,6 +21,7 @@ struct Camera : Node {
     float               focus_aperture = 0; ///< focus aperture
     float               shutter = 1; ///< how long shutter stays open
     bool                orthographic = false; /// orthographic
+    float               pixel_scale = focus_dist / image_dist;
 };
 
 ///@name image size
@@ -85,6 +86,34 @@ inline ray3f camera_ray(Camera* camera, const vec2f& uv, const vec2f& auv) {
         auto l = vec3f((uv.x-0.5f)*camera->image_width, (uv.y-0.5f)*camera->image_height, 0);
         rayl = ray3f(l,-z3f);
     }
+    return transform_ray(camera->frame, rayl);
+}
+
+inline ray3f camera_ray_dof(Camera* camera, const vec2f& uv, Rng& r) {
+    ray3f rayl;
+    // Disk domain
+    float r1 = r.next_float() * camera->focus_aperture;
+    float a1 = r.next_float() * 2 * pi;
+    //message_va("Domain random r: %f, random angle: %f", r1, a1);
+    auto F = vec3f(r1*cos(a1), r1*sin(a1), 0) * camera->focus_aperture;
+
+    // Square domain
+    /*
+    auto F = camera->frame.o + vec3f((r.next_float() - 0.5)*camera->focus_aperture,
+                                     (r.next_float() - 0.5)*camera->focus_aperture,
+                                     0);
+    */
+
+    auto pixel_scale = camera->focus_dist / camera->image_dist;
+    //auto r2 = r.next_float() * camera->pixel_scale;
+    //auto a2 = r.next_float() * 2 * pi;
+    auto Qu = (uv.x-0.5f) * camera->image_width * pixel_scale;
+    auto Qv = (uv.y-0.5f) * camera->image_height * pixel_scale;
+    auto qx = (uv.x-0.5f)*camera->image_width*camera->focus_dist/camera->image_dist;
+    auto qy = (uv.y-0.5f)*camera->image_height*camera->focus_dist/camera->image_dist;
+    auto Q = vec3f(qx, qy, -camera->focus_dist);
+    rayl = ray3f(F,normalize(Q-F));
+
     return transform_ray(camera->frame, rayl);
 }
 ///@}

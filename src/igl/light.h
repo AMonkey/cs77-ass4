@@ -110,6 +110,42 @@ inline ShadowSample light_shadow_sample(Light* light, const vec3f& p) {
     return ss;
 }
 
+inline ShadowSample rand_light_shadow_sample(Light* light,
+                                             const vec3f& p,
+                                             float u_rand,
+                                             float v_rand)
+{
+    // Handles soft shadows
+    ShadowSample ss;
+    auto rand_point = light->frame;
+    if(is<AreaLight>(light)) {
+        // Shift light frame by a random amount within the shape
+        auto sh = cast<Quad>(cast<AreaLight>(light)->shape);
+        auto u = (0.5 - u_rand) * sh->width;
+        auto v = (0.5 - v_rand) * sh->height;
+        vec3f shift = vec3f(u,v,0);
+        // Transform to object pov
+        shift = transform_vector(identity_frame3f, shift); 
+        rand_point.o += shift;
+        
+        auto pl = transform_point_inverse(rand_point, p);
+
+        ss.dir = normalize(-pl);
+        ss.dist = length(pl);
+        ss.radiance = cast<AreaLight>(light)->intensity / lengthSqr(pl);
+        ss.radiance *= dot(vec3f(0.0, 0.0, 1.0), -ss.dir);
+        ss.pdf = 1 / (sh->width * sh->height); //cast<AreaLight>(light)->shadow_samples;
+
+    }
+    else {
+        //NOT_IMPLEMENTED_ERROR();
+        //message_va("Warning: not an area light, skipping soft shadowing.");
+        return light_shadow_sample(light, p);
+
+    }
+    ss.dir = transform_direction(rand_point, ss.dir);
+    return ss;
+}
 
 /// sample light background if needed (only userful for envlights)
 inline vec3f light_sample_background(Light* light, const vec3f& wo) {
@@ -154,6 +190,8 @@ inline void light_lookat(Light* light, const vec3f& eye, const vec3f& center, co
     light->frame.y = up;
     light->frame = orthonormalize(light->frame);
 }
+
+//inline ray3f rand_reflected_ray(ray3f r, )
 ///@}
 
 ///@}
