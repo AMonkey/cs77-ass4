@@ -26,7 +26,7 @@ LDFLAGS = -std=c++11
 
 ifeq ($(COMPILER),gcc)
 	CC       = g++-4.7
-	CFLAGS  += -Wno-sign-compare
+	CFLAGS  += -Wno-sign-compare -Ofast
 	LIBS     = -lGL -lGLU -lglut
 endif
 

@@ -94,10 +94,13 @@ inline ShadowSample light_shadow_sample(Light* light, const vec3f& p) {
         ss.pdf = 1;
     }
     else if(is<AreaLight>(light)) {
+        auto sh = cast<Quad>(cast<AreaLight>(light)->shape);
         ss.dir = normalize(-pl);
         ss.dist = length(pl);
         ss.radiance = cast<AreaLight>(light)->intensity / lengthSqr(pl);
-        ss.pdf = 1;
+        ss.radiance *= dot(vec3f(0.0, 0.0, 1.0), -ss.dir);
+        ss.pdf = 1 / (sh->width * sh->height);
+
     }
     else if(is<EnvLight>(light)) {
         ss.dir = normalize(-pl);

@@ -105,6 +105,19 @@ inline Material* material_shading_textures(Material* material, const vec2f& texc
         ret->blur_size = phong->blur_size;
         ret->use_reflected = phong->use_reflected;
         ret->diffuse = phong->diffuse;
+
+        // Textures
+        if (material_has_textures(material)) {
+            image3f img = phong->diffuse_texture->image;
+            auto u = texcoord.x;
+            auto v = texcoord.y;
+
+            int x = clamp((int)(u * img.width()), 0, img.width());
+            int y = clamp((int)(v * img.height()), 0, img.height());
+            ret->diffuse *= img.at(x,y);
+
+        }
+
         ret->specular = phong->specular;
         ret->exponent = phong->exponent;
         ret->reflection = phong->reflection;
